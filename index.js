@@ -1,3 +1,15 @@
+// DOM Variables
+const card1 = document.querySelector(".card1");
+const card2 = document.querySelector(".card2");
+const card3 = document.querySelector(".card3");
+const card4 = document.querySelector(".card4");
+const card5 = document.querySelector(".card5");
+const card1img = document.querySelector(".card1-img");
+const card2img = document.querySelector(".card2-img");
+const card3img = document.querySelector(".card3-img");
+const card4img = document.querySelector(".card4-img");
+const card5img = document.querySelector(".card5-img");
+
 const cardContainer = document.querySelector(".card-container");
 
 const cardSuit = ["clubs", "diamonds", "hearts", "spades"];
@@ -28,32 +40,10 @@ function createCardDeck() {
   shuffleCards(cardShoe);
 }
 
-function dealFaceDown() {
-  for (let i = 0; i < 5; i++) {
-    const newCardDiv = document.createElement("div");
-    const cardStatus = document.createElement("h1");
-    const cardImage = document.createElement("img");
-    cardStatus.classList.add(`card${i + 1}Status`);
-    cardImage.classList.add(`card${i + 1}Image`);
-    cardImage.setAttribute("src", `images/back.svg`);
-    newCardDiv.appendChild(cardStatus);
-    newCardDiv.appendChild(cardImage);
-    cardContainer.appendChild(newCardDiv);
-  }
-}
-
 function dealFirstHand() {
   cardContainer.innerHTML = "";
   for (let i = 0; i < 5; i++) {
-    const newCardDiv = document.createElement("div");
-    const cardStatus = document.createElement("h1");
-    const cardImage = document.createElement("img");
-    cardStatus.classList.add(`card${i + 1}Status`);
-    cardImage.classList.add(`card${i + 1}Image`);
-    cardImage.setAttribute("src", `images/${playerHand[i]}.svg`);
-    newCardDiv.appendChild(cardStatus);
-    newCardDiv.appendChild(cardImage);
-    cardContainer.appendChild(newCardDiv);
+    card1img.setAttribute("src", `images/${playerHand[i]}.svg`);
   }
 }
 
@@ -79,4 +69,6 @@ function shuffleCards(deck) {
 }
 
 createCardDeck();
-dealFaceDown();
+dealFirstHand();
+
+// card2img.setAttribute("src", `images/${playerHand[0]}.svg`);
