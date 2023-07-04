@@ -1,3 +1,5 @@
+const cardContainer = document.querySelector(".card-container");
+
 const cardSuit = ["clubs", "diamonds", "hearts", "spades"];
 const cardValue = [
   "ace",
@@ -26,11 +28,32 @@ function createCardDeck() {
   shuffleCards(cardShoe);
 }
 
-function dealFirstHand() {
+function dealFaceDown() {
   for (let i = 0; i < 5; i++) {
-    let nextCard = cardShoe.shift();
-    console.log("next card removed is:", nextCard);
-    playerHand.push(nextCard);
+    const newCardDiv = document.createElement("div");
+    const cardStatus = document.createElement("h1");
+    const cardImage = document.createElement("img");
+    cardStatus.classList.add(`card${i + 1}Status`);
+    cardImage.classList.add(`card${i + 1}Image`);
+    cardImage.setAttribute("src", `images/back.svg`);
+    newCardDiv.appendChild(cardStatus);
+    newCardDiv.appendChild(cardImage);
+    cardContainer.appendChild(newCardDiv);
+  }
+}
+
+function dealFirstHand() {
+  cardContainer.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    const newCardDiv = document.createElement("div");
+    const cardStatus = document.createElement("h1");
+    const cardImage = document.createElement("img");
+    cardStatus.classList.add(`card${i + 1}Status`);
+    cardImage.classList.add(`card${i + 1}Image`);
+    cardImage.setAttribute("src", `images/${playerHand[i]}.svg`);
+    newCardDiv.appendChild(cardStatus);
+    newCardDiv.appendChild(cardImage);
+    cardContainer.appendChild(newCardDiv);
   }
 }
 
@@ -48,7 +71,12 @@ function shuffleCards(deck) {
     const j = Math.floor(Math.random() * (i + 1));
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
+  playerHand[0] = deck.shift();
+  playerHand[1] = deck.shift();
+  playerHand[2] = deck.shift();
+  playerHand[3] = deck.shift();
+  playerHand[4] = deck.shift();
 }
 
 createCardDeck();
-dealFirstHand();
+dealFaceDown();
