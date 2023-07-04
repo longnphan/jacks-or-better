@@ -41,9 +41,9 @@ function createCardDeck() {
 }
 
 function dealFirstHand() {
-  cardContainer.innerHTML = "";
   for (let i = 0; i < 5; i++) {
-    card1img.setAttribute("src", `images/${playerHand[i]}.svg`);
+    let cardImgName = eval(`card${i + 1}img`);
+    cardImgName.setAttribute("src", `images/${playerHand[i]}.svg`);
   }
 }
 
