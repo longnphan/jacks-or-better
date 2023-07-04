@@ -31,6 +31,14 @@ const cardValue = [
 const cardShoe = [];
 const playerHand = [];
 
+function addEventListener() {
+  card1img.addEventListener("click", e => showHold(e));
+  card2img.addEventListener("click", e => showHold(e));
+  card3img.addEventListener("click", e => showHold(e));
+  card4img.addEventListener("click", e => showHold(e));
+  card5img.addEventListener("click", e => showHold(e));
+}
+
 function createCardDeck() {
   for (let suit of cardSuit) {
     for (let val of cardValue) {
@@ -45,6 +53,13 @@ function dealFirstHand() {
     let cardImgName = eval(`card${i + 1}img`);
     cardImgName.setAttribute("src", `images/${playerHand[i]}.svg`);
   }
+  addEventListener();
+}
+
+function showHold(event) {
+  console.log(event.target.className);
+  let statusName = event.target.className.replace("img", "status");
+  statusName.textContext = "Hold";
 }
 
 function renderPlayerHand() {
