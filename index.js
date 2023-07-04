@@ -28,20 +28,6 @@ function createCardDeck() {
   shuffleCards(cardShoe);
 }
 
-function dealFaceDown() {
-  for (let i = 0; i < 5; i++) {
-    const newCardDiv = document.createElement("div");
-    const cardStatus = document.createElement("h1");
-    const cardImage = document.createElement("img");
-    cardStatus.classList.add(`card${i + 1}Status`);
-    cardImage.classList.add(`card${i + 1}Image`);
-    cardImage.setAttribute("src", `images/back.svg`);
-    newCardDiv.appendChild(cardStatus);
-    newCardDiv.appendChild(cardImage);
-    cardContainer.appendChild(newCardDiv);
-  }
-}
-
 function dealFirstHand() {
   cardContainer.innerHTML = "";
   for (let i = 0; i < 5; i++) {
@@ -79,4 +65,4 @@ function shuffleCards(deck) {
 }
 
 createCardDeck();
-dealFaceDown();
+// dealFaceDown();
